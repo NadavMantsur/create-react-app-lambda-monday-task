@@ -14,13 +14,14 @@ class LambdaDemo extends Component {
     fetch("https://opentdb.com/api.php?amount=100")
       .then((response) => response.json())
       .then((json) => this.setState({ loading: true, msg: json.results }));
-    console.log(this.state);
+  
   };
 
   render() {
     // const { loading, msg } = this.state;
 
     return <>
+    {  console.log(this.state)}
     <button onClick={()=>this.handleClick()} > Fetch</button>
     {/* {loading && <span>{msg}</span>} */}
     </>;
