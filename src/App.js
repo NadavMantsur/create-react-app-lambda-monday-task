@@ -20,7 +20,10 @@ class LambdaDemo extends Component {
   render() {
     const { loading, msg } = this.state;
 
-    return <>{loading && <span>{msg}</span>}</>;
+    return <>
+    {/* {loading && <span>{msg}</span>} */}
+    blabla
+    </>;
   }
 }
 
@@ -28,8 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        hello world
-        {/* <LambdaDemo /> */}
+        <LambdaDemo />
       </div>
     );
   }
