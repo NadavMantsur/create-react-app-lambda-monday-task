@@ -7,7 +7,7 @@ class LambdaDemo extends Component {
     this.state = { loading: false, msg: null };
   }
 
-  handleClick = (api) => (e) => {
+  handleClick = () => (e) => {
     e.preventDefault();
 
     this.setState({ loading: true });
@@ -21,11 +21,14 @@ class LambdaDemo extends Component {
     // const { loading, msg } = this.state;
 
     return <>
+    <button onClick={()=>this.handleClick()} > Fetch</button>
     {/* {loading && <span>{msg}</span>} */}
-    blabla
     </>;
   }
 }
+
+
+
 
 class App extends Component {
   render() {
