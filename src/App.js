@@ -33,7 +33,7 @@ class LambdaDemo extends Component {
         {console.log(loading)}
         {console.log(msg)}
         <div>
-          {msg.map((item) => {
+          {msg?.map((item) => {
             return (
               <div>
                 <span>{item.category}</span>
