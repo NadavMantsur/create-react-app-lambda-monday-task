@@ -7,7 +7,7 @@ class LambdaDemo extends Component {
     this.state = { loading: false, msg: null };
   }
 
-  handleClick = () => (e) => {
+  handleClick(){
     debugger
     e.preventDefault();
 
@@ -21,13 +21,13 @@ class LambdaDemo extends Component {
   componentDidMount() {
     // make fetch request
     debugger
-    this.handleClick()
+    handleClick()
     console.log(this.state)
 }
 
 componentWillUnmount() {
   debugger
-  this.handleClick()
+  handleClick()
     // make fetch request
 }
 
@@ -37,7 +37,7 @@ componentWillUnmount() {
 
     return <>
     {  console.log(this.state)}
-    <button onClick={()=>this.handleClick()}> Fetch</button>
+    <button onClick={()=>handleClick()}> Fetch</button>
     {/* {loading && <span>{msg}</span>} */}
     </>;
   }
