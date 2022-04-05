@@ -32,12 +32,12 @@ componentWillUnmount() {
 
   
   render() {
-    // const { loading, msg } = this.state;
+    const { loading, msg } = this.state;
 
     return <>
     {  console.log(this.state)}
     <button onClick={()=>this.handleClick()}> Fetch</button>
-    {/* {loading && <span>{msg}</span>} */}
+     {loading && <span>{msg}</span>}
     </>;
   }
 }
