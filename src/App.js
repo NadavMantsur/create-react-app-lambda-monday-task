@@ -7,16 +7,16 @@ class LambdaDemo extends Component {
     this.state = { loading: false, msg: null };
   }
 
-  handleClick() {
+  load() {
     this.setState({ loading: true });
     fetch("https://opentdb.com/api.php?amount=100")
       .then((response) => response.json())
-      .then((json) => this.setState({ loading: true, msg: json.results }));
+      .then((json) => this.setState({ loading: false, msg: json.results }));
   }
 
   componentDidMount() {
     // make fetch request
-    this.handleClick();
+    this.load();
     console.log(this.state);
   }
 
