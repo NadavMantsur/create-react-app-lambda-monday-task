@@ -9,7 +9,6 @@ class LambdaDemo extends Component {
 
   handleClick(){
     debugger
-    e.preventDefault();
 
     this.setState({ loading: true });
     fetch("https://opentdb.com/api.php?amount=100")
@@ -21,13 +20,13 @@ class LambdaDemo extends Component {
   componentDidMount() {
     // make fetch request
     debugger
-    handleClick()
+    this.handleClick()
     console.log(this.state)
 }
 
 componentWillUnmount() {
   debugger
-  handleClick()
+  this.handleClick()
     // make fetch request
 }
 
@@ -37,7 +36,7 @@ componentWillUnmount() {
 
     return <>
     {  console.log(this.state)}
-    <button onClick={()=>handleClick()}> Fetch</button>
+    <button onClick={()=>this.handleClick()}> Fetch</button>
     {/* {loading && <span>{msg}</span>} */}
     </>;
   }
