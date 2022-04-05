@@ -33,17 +33,21 @@ class LambdaDemo extends Component {
         {console.log(loading)}
         {console.log(msg)}
         <div>
-          {msg?.map((item) => {
-            return (
-              <div>
-                <span>{item.category}</span>
-                <span>{item.question}</span>
-                <span>{item.difficulty}</span>
-                <span>{item.category}</span>
-                <span>{item.category}</span>
-              </div>
-            );
-          })}
+          {msg ? (
+            sg.map((item) => {
+              return (
+                <div>
+                  <span>{item.category}</span>
+                  <span>{item.question}</span>
+                  <span>{item.difficulty}</span>
+                  <span>{item.category}</span>
+                  <span>{item.category}</span>
+                </div>
+              );
+            })
+          ) : (
+            <>loading</>
+          )}
         </div>
       </>
     );
