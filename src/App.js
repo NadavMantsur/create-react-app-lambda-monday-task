@@ -8,6 +8,7 @@ class LambdaDemo extends Component {
   }
 
   handleClick = () => (e) => {
+    debugger
     e.preventDefault();
 
     this.setState({ loading: true });
