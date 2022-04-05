@@ -20,11 +20,14 @@ class LambdaDemo extends Component {
 
   componentDidMount() {
     // make fetch request
+    debugger
     this.handleClick()
     console.log(this.state)
 }
 
 componentWillUnmount() {
+  debugger
+  this.handleClick()
     // make fetch request
 }
 
@@ -34,7 +37,7 @@ componentWillUnmount() {
 
     return <>
     {  console.log(this.state)}
-    <button onClick={()=>this.handleClick()} > Fetch</button>
+    <button onClick={()=>this.handleClick()}> Fetch</button>
     {/* {loading && <span>{msg}</span>} */}
     </>;
   }
