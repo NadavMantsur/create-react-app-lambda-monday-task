@@ -17,6 +17,17 @@ class LambdaDemo extends Component {
   
   };
 
+  componentDidMount() {
+    // make fetch request
+    this.handleClick()
+    console.log(this.state)
+}
+
+componentWillUnmount() {
+    // make fetch request
+}
+
+  
   render() {
     // const { loading, msg } = this.state;
 
