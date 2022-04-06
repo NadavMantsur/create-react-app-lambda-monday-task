@@ -31,7 +31,7 @@ function App() {
               <h3>{item.question}</h3>
 
               <div className="answers">
-                {incorrect_answers.map((answer) => {
+                {incorrect_answers?.map((answer) => {
                   return <div>{answer}</div>;
                 })}
               </div>
