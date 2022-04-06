@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
+
+  const [data, setData] = useState({});
+  useEffect(() => {
+    fetch("https://opentdb.com/api.php?amount=100")
+      .then((response) => response.json())
+      .then((json) => {
+        console.log("success");
+        setData(json);
+      });
+  }, []);
+
+
+  console.log(data);
+ 
+
   return <div>hello world</div>;
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { Component } from "react";
 // import "./App.css";
