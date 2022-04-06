@@ -1,22 +1,46 @@
 import React, { useState, useEffect } from "react";
 
 function App() {
-
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=100")
       .then((response) => response.json())
       .then((json) => {
         console.log("success");
-        setData(json);
+        setData(json.results);
       });
   }, []);
 
-
   console.log(data);
- 
 
-  return <div>hello world</div>;
+  return (
+    <div>
+      {data.map((item) => {
+        return (
+          <div
+            className="container"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "100vw",
+              justifyContent: "center",
+            }}
+          >
+            <div className="card" style={{width:"80%"}}>
+              <h2>{item.category}</h2>
+              <h3>{item.question}</h3>
+
+              <div className="answers">
+                {incorrect_answers.map((answer) => {
+                  return <div>{answer}</div>;
+                })}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default App;
