@@ -55,7 +55,7 @@ export default function App() {
 		}
 
 		const nextQuestion = currentQuestion +1;
-		if(nextQuestion < questions.length) {
+		if(nextQuestion < data.length) {
 			setCurrentQuestion(nextQuestion);
 		}else{
 			setShowScore(true);
