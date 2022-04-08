@@ -1,114 +1,105 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 
-function App() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=100")
-      .then((response) => response.json())
-      .then((json) => {
-        console.log("success");
-        setData(json.results);
-      });
-  }, []);
+export default function App() {
+	const questions = [
+		{
+			questionText: 'What is the capital of France?',
+			answerOptions: [
+				{ answerText: 'New York', isCorrect: false },
+				{ answerText: 'London', isCorrect: false },
+				{ answerText: 'Paris', isCorrect: true },
+				{ answerText: 'Dublin', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'Who is CEO of Tesla?',
+			answerOptions: [
+				{ answerText: 'Jeff Bezos', isCorrect: false },
+				{ answerText: 'Elon Musk', isCorrect: true },
+				{ answerText: 'Bill Gates', isCorrect: false },
+				{ answerText: 'Tony Stark', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'The iPhone was created by which company?',
+			answerOptions: [
+				{ answerText: 'Apple', isCorrect: true },
+				{ answerText: 'Intel', isCorrect: false },
+				{ answerText: 'Amazon', isCorrect: false },
+				{ answerText: 'Microsoft', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'How many Harry Potter books are there?',
+			answerOptions: [
+				{ answerText: '1', isCorrect: false },
+				{ answerText: '4', isCorrect: false },
+				{ answerText: '6', isCorrect: false },
+				{ answerText: '7', isCorrect: true },
+			],
+		},
+	];
 
-  console.log(data);
+	const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  return (
-    <div>
-      {data.map((item) => {
-        return (
-          <div
-            className="container"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100vw",
-              justifyContent: "center",
-            }}
-          >
-            <div className="card" style={{width:"80%"}}>
-              <h2>{item.category}</h2>
-              <h3>{item.question}</h3>
+	const [showScore, setShowScore] = useState(false);
 
-              <div className="answers">
-                {incorrect_answers?.map((answer) => {
-                  return <div>{answer}</div>;
-                })}
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+	const [score, setScore] = useState(0);
+
+	const[scoreList, setScoreList] = useState(0);
+
+	const handleAnswerButton = (isCorrect) => {
+		if(isCorrect === true) {
+			setScore(score +1);
+		}
+
+		const nextQuestion = currentQuestion +1;
+		if(nextQuestion < questions.length) {
+			setCurrentQuestion(nextQuestion);
+		}else{
+			setShowScore(true);
+		}
+	}
+
+	const handleResetButton = (score) => {
+		setScoreList(scoreList+score);
+		setCurrentQuestion(0);
+		setShowScore(false);
+		setScore(0);
+	}
+
+	useEffect(() => {
+		fetch("https://opentdb.com/api.php?amount=100")
+		  .then((response) => response.json())
+		  .then((json) => {
+			console.log("success");
+			setData(json.results);
+		  });
+	  }, []);
+	
+	  console.log(data);
+
+	return (
+		<div className='app'>
+			{showScore ? (
+				<div className='score-section'>You scored {score} out of {questions.length} and your acummulated score is {scoreList}
+				<button onClick={() => handleResetButton(score)}>Play Again!</button></div>
+
+			) : (
+				<>
+					<div className='question-section'>
+						<div className='question-count'>
+							<span>Question {currentQuestion + 1}</span>/{questions.length}
+						</div>
+						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+					</div>
+					<div className='answer-section'>
+						{questions[currentQuestion].answerOptions.map((answerOption) => (
+							<button onClick={() => handleAnswerButton(answerOption.isCorrect)}>{answerOption.answerText}</button>
+						))}
+					</div>
+				</>
+			)}
+		</div>
+	);
 }
-
-export default App;
-
-// import React, { Component } from "react";
-// import "./App.css";
-
-// class LambdaDemo extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { loading: false, msg: null };
-//   }
-
-//   load() {
-//     this.setState({ loading: true });
-//     fetch("https://opentdb.com/api.php?amount=100")
-//       .then((response) => response.json())
-//       .then((json) => this.setState({ loading: false, msg: json.results }));
-//   }
-
-//   componentDidMount() {
-//     // make fetch request
-//     this.load();
-//     console.log(this.state);
-//   }
-
-//   /*componentWillUnmount() {
-//   this.handleClick()
-//     // make fetch request
-// }*/
-
-//   render() {
-//     const { loading, msg } = this.state;
-
-//     return (
-//       <>
-//         {console.log(loading)}
-//         {console.log(msg)}
-//         <div>
-//           {msg ? (
-//             msg.map((item) => {
-//               return (
-//                 <div>
-//                   <span>{item.category}</span>
-//                   <span>{item.question}</span>
-//                   <span>{item.difficulty}</span>
-//                   <span>{item.category}</span>
-//                   <span>{item.category}</span>
-//                 </div>
-//               );
-//             })
-//           ) : (
-//             <>loading</>
-//           )}
-//         </div>
-//       </>
-//     );
-//   }
-// }
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <LambdaDemo />
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
