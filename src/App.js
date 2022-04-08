@@ -90,12 +90,12 @@ export default function App() {
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion + 1}</span>/{data.length}
 						</div>
 						<div className='question-text'>{data[currentQuestion]?.question}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
+						{data[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerButton(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
