@@ -68,7 +68,7 @@ export default function App() {
 		setScore(0);
 	}
 
-	react.useEffect(() => {
+	React.useEffect(() => {
 		fetch("https://opentdb.com/api.php?amount=100")
 		  .then((response) => response.json())
 		  .then((json) => {
