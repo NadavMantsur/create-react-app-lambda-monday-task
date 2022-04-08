@@ -73,7 +73,7 @@ export default function App() {
 		  .then((response) => response.json())
 		  .then((json) => {
 			console.log("success");
-			setData(json.results);
+			React.setData(json.results);
 		  });
 	  }, []);
 	
