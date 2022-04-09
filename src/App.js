@@ -39,7 +39,7 @@ export default function App() {
 	// 		],
 	// 	},
 	// ];
-  const [data, setData] = useState([]);
+  	const [data, setData] = useState([]);
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
