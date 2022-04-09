@@ -1,45 +1,8 @@
 import React, { useState } from 'react';
 
 export default function App() {
-	// const questions = [
-	// 	{
-	// 		questionText: 'What is the capital of France?',
-	// 		answerOptions: [
-	// 			{ answerText: 'New York', isCorrect: false },
-	// 			{ answerText: 'London', isCorrect: false },
-	// 			{ answerText: 'Paris', isCorrect: true },
-	// 			{ answerText: 'Dublin', isCorrect: false },
-	// 		],
-	// 	},
-	// 	{
-	// 		questionText: 'Who is CEO of Tesla?',
-	// 		answerOptions: [
-	// 			{ answerText: 'Jeff Bezos', isCorrect: false },
-	// 			{ answerText: 'Elon Musk', isCorrect: true },
-	// 			{ answerText: 'Bill Gates', isCorrect: false },
-	// 			{ answerText: 'Tony Stark', isCorrect: false },
-	// 		],
-	// 	},
-	// 	{
-	// 		questionText: 'The iPhone was created by which company?',
-	// 		answerOptions: [
-	// 			{ answerText: 'Apple', isCorrect: true },
-	// 			{ answerText: 'Intel', isCorrect: false },
-	// 			{ answerText: 'Amazon', isCorrect: false },
-	// 			{ answerText: 'Microsoft', isCorrect: false },
-	// 		],
-	// 	},
-	// 	{
-	// 		questionText: 'How many Harry Potter books are there?',
-	// 		answerOptions: [
-	// 			{ answerText: '1', isCorrect: false },
-	// 			{ answerText: '4', isCorrect: false },
-	// 			{ answerText: '6', isCorrect: false },
-	// 			{ answerText: '7', isCorrect: true },
-	// 		],
-	// 	},
-	// ];
-  	const [data, setData] = useState([]);
+
+	const [data, setData] = useState([]);
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -83,7 +46,7 @@ export default function App() {
 	return (
 		<div className='app'>
 			{showScore ? (
-				<div className='score-section'>You scored {score}
+				<div className='score-section'>You scored {score} out of {data.length} and your acummulated score is {scoreList}
 				<button onClick={() => handleResetButton(score)}>Play Again!</button></div>
 
 			) : (
@@ -92,10 +55,10 @@ export default function App() {
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{data.length}
 						</div>
-						<div className='question-text'>{data[currentQuestion]?.question}</div>
+						<div className='question-text'>{data[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{data[currentQuestion].answerOptions.map((answerOption) => (
+						{questions[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerButton(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
