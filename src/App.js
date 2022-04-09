@@ -32,7 +32,7 @@ export default function App() {
 		setScore(0);
 	}
 
-	useEffect(() => {
+	React.useEffect(() => {
 		fetch("https://opentdb.com/api.php?amount=100")
 		  .then((response) => response.json())
 		  .then((json) => {
@@ -58,7 +58,7 @@ export default function App() {
 						<div className='question-text'>{data[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
+						{data[currentQuestion].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerButton(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
